@@ -18,11 +18,11 @@ func check(err error) {
 func main() {
 	proxy, _ := url.Parse("socks5://127.0.0.1:9150")
 	userAgent := "Mozilla/5.0 (Windows NT 10.0; rv:109.0) Gecko/20100101 Firefox/115.0"
-	fmt.Println("target url: ")
+	fmt.Println("Please enter a target URL.")
 	var targetUrl, fileName string
 	_, err := fmt.Scanln(&targetUrl)
 	check(err)
-	fmt.Println("file name: ")
+	fmt.Println("Please enter a file name.")
 	_, err2 := fmt.Scanln(&fileName)
 	check(err2)
 
@@ -50,7 +50,7 @@ func main() {
 			check(err)
 			size, err := io.Copy(file, resp.Body)
 			time.Sleep(7)
-			fmt.Printf("Downloaded a file with size %d", size)
+			fmt.Printf("Downloaded %d bytes to %s \n\n", size, fileName)
 			break
 		}
 	}
